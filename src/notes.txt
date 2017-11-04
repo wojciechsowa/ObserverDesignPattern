@@ -1,0 +1,50 @@
+1. Określa zależność 1 do wielu między obiektami.
+2. Kiedy zmieni się stan jednego z obiektów, wszystkie obiekty zależne od niego są o tym automatycznie
+    powiadamiane i aktualizowane.
+3. Inne nazwy: obiekty zależne/publikuj-subskrybuj
+
+    Kiedy użytkownik zmieni informacje w arkuszu kalkulacyjnym, modyfikacje zostaną natychmiast
+    odwierciedlone na wykresie słupkowym (i na odwrót).
+
+    Arkusz kalkulacyjny i wykres słukowy są zależne od obiektu danych, dlatego należy powiadamiać je o każdej
+    zmianie stanu tego obiektu.
+
+    Wzorzec Obserwator opisuje, jak nawiązać takie relacje.
+
+    Kluczowe elementy to PODMIOT i OBSERWATOR.
+
+    PODMIOT odpowiada za publikowanie powiadomień. Nie musi przy tym wiedzieć kim są obserwatorzy.
+    Ponadto posiada metody do dołączania i odłączania obserwatorów
+
+    Powiadomienia może subskrybować dowolna liczba obserwatorów.
+
+    Dąży się do tego, aby stan podmiotu był spójny ze stanem obserwatorów.
+
+    Obserwator to wzorzec behawioralny.
+
+    Framework MVC również wykorzystuje wzorzec Obserwator - Model to podmiot, View to obserwator
+
+    EventListener.add() - dobry przykład na dodawanie subskrybentów do nasłuchiwania zmian.
+
+
+4. Jeśli jeden obiekt jest zmodyfikowany, jego obiekty zależne są automatycznie powiadamiane o zmianie.
+
+---
+Wiele obiektów dostaje informację, gdy w jednym obiekcie zajdzie jakaś zmiana.
+Podmiot nie musi nic wiedzieć o obserwatorze.
+
+Przykład: zdarzenia związane z GUI
+
+Przykład z życia
+    Podmiot - Kanał Youtube
+    Obserwator - Użytkownik na YT, który subsktrybuje kanał (podmiot)
+
+    Subject/Publisher
+    - ArrayList<Observer> observerList;
+
+    - void register(Observer o);
+    - void unregister(Observer o);
+    - void notifyObservers();
+
+    Observer
+    - void update()
